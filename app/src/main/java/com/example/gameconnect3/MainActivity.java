@@ -3,8 +3,13 @@ package com.example.gameconnect3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+
+    public void makeMove(View view) {
+        // Keeping this empty for now
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
