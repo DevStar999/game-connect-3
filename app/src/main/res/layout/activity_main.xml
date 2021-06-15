@@ -38,8 +38,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
-            android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:onClick="makeMove" />
         <ImageView
             android:id="@+id/cellImageView1"
             android:tag="1"
