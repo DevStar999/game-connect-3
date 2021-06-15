@@ -46,12 +46,7 @@ public class GameDecisionLogic {
         return (finalWinningPosition.size()>0);
     }
 
-    public Boolean checkDraw(ArrayList<CellValues> cellStates) {
-        for (CellValues currentCell: cellStates) {
-            if (currentCell.equals(CellValues.blank)) {
-                return false;
-            }
-        }
-        return true;
+    public Boolean checkDraw(Integer noOfPlayerTurnsMade) {
+        return (noOfPlayerTurnsMade > 9);
     }
 }

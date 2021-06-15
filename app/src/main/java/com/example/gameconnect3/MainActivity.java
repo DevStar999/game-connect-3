@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         CellValues currentPlayer;
-        if (playerTurn == 1) { // Chance for Red to play
+        if (playerTurn%2 == CellValues.red.ordinal()) { // Chance for Red to play
             currentPlayer = CellValues.red;
         }
         else { // Chance for Yellow to play
@@ -66,14 +66,14 @@ public class MainActivity extends AppCompatActivity {
         cellStates.set(cellPosition, currentPlayer);
 
         // Change playerTurn
-        playerTurn = (playerTurn == 1) ? 2 : 1;
+        playerTurn++;
 
         // Check game status
         if (referee.checkWin(cellStates)) { // One of the players won
             Log.i("Info Game WIN", "Player " + currentPlayer.toString() + " has won game");
             gameOngoing = false; isResetRequired = true;
         }
-        else if(referee.checkDraw(cellStates)) { // Game ended as a draw
+        else if(referee.checkDraw(playerTurn)) { // Game ended as a draw
             Log.i("Info Game DRAW", "NO WIN, Board full filled");
             gameOngoing = false; isResetRequired = true;
         }
