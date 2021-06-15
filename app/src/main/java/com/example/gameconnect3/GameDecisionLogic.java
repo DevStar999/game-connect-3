@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class GameDecisionLogic {
     private ArrayList<ArrayList<Integer>> winningCombinations;
+    private ArrayList<ArrayList<Integer>> finalWinningPosition;
 
     public GameDecisionLogic() {
         winningCombinations = new ArrayList<ArrayList<Integer>>(){{
@@ -17,6 +18,7 @@ public class GameDecisionLogic {
             add(new ArrayList<>(Arrays.asList(1, 4, 7)));
             add(new ArrayList<>(Arrays.asList(2, 5, 8)));
         }};
+        finalWinningPosition = new ArrayList<>();
     }
 
     public Boolean checkWin(ArrayList<CellValues> cellStates) {
@@ -36,10 +38,12 @@ public class GameDecisionLogic {
                     }
                 }
             }
-            if (count == 3) { return true; }
+            if (count == 3) {
+                finalWinningPosition.add(winningCombinations.get(cwc));
+            }
         }
 
-        return false;
+        return (finalWinningPosition.size()>0);
     }
 
     public Boolean checkDraw(ArrayList<CellValues> cellStates) {
