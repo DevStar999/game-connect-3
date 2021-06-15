@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private Integer playerTurn;
     private Boolean gameOngoing;
+    private Boolean isResetRequired;
     private ArrayList<ArrayList<Integer>> winningCombinations;
     private ArrayList<CellValues> cellStates;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private void initialiseVariables() {
         playerTurn = 0;
         gameOngoing = false;
+        isResetRequired = false;
 
         winningCombinations = new ArrayList<ArrayList<Integer>>(){{
             new ArrayList<>(Arrays.asList(0, 1, 2));
@@ -79,6 +81,27 @@ public class MainActivity extends AppCompatActivity {
 
         // Change playerTurn
         playerTurn = (playerTurn == 1) ? 2 : 1;
+
+        // Check game status
+        if (checkWin()) { // One of the players won
+            gameOngoing = false;
+        }
+        else if(checkDraw()) { // Game ended as a draw
+            gameOngoing = false;
+        }
+    }
+
+    private Boolean checkWin() {
+        // Dummy value for now
+        return false;
+    }
+    private Boolean checkDraw() {
+        // Dummy value for now
+        return false;
+    }
+
+    private void resetGame() {
+        // Logic to reset Game
     }
 
     @Override
@@ -96,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
                 gameOngoing = true;
                 startGameButton.setEnabled(false);
                 startGameButton.setAlpha(0f);
+                if (isResetRequired) {
+                    resetGame();
+                }
                 Log.i("Start Button Clicked", "playerTurn " + playerTurn
                         + ", gameOngoing = " + gameOngoing);
             }
