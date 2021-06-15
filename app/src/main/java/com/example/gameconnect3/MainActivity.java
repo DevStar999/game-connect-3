@@ -2,6 +2,7 @@ package com.example.gameconnect3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean isResetRequired;
     private GameDecisionLogic referee;
     private ArrayList<CellValues> cellStates;
+    private PostGameDisplays postGameDisplays;
 
     // Views
     private Button startGameButton;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         gameOngoing = false;
         isResetRequired = false;
         referee = new GameDecisionLogic();
+        postGameDisplays = new PostGameDisplays(this);
 
         cellStates = new ArrayList<>();
         for(Integer cellPosition=0; cellPosition<9; cellPosition++) {
@@ -72,9 +75,13 @@ public class MainActivity extends AppCompatActivity {
         Boolean gameOver = false;
         if (referee.checkWin(cellStates)) { // One of the players won
             Log.i("Info Game WIN", "Player " + currentPlayer.toString() + " has won game");
+            postGameDisplays.displayWin(this, currentPlayer.toString(), referee.getFinalWinningPosition());
+            gameOver = true;
         }
         else if(referee.checkDraw(playerTurn)) { // Game ended as a draw
             Log.i("Info Game DRAW", "NO WIN, Board full filled");
+            postGameDisplays.displayDraw();
+            gameOver = true;
         }
 
         if (gameOver) {
@@ -99,13 +106,16 @@ public class MainActivity extends AppCompatActivity {
             cellStates.set(i, CellValues.blank);
 
             Integer cellResourceId =  getResources().getIdentifier("cellImageView" + i.toString(),
-                    "drawable",
+                    "id",
                     this.getPackageName());
             ImageView cell = findViewById(cellResourceId);
             Integer blankPieceResourceId = getResources().getIdentifier(CellValues.blank.toString(),
                     "drawable",
                     this.getPackageName());
             cell.setImageResource(blankPieceResourceId);
+            cell.setAlpha(0f);
+            // Set Background Color to white again
+            cell.setBackgroundColor(0x00000000);
         }
     }
 

@@ -7,6 +7,10 @@ public class GameDecisionLogic {
     private ArrayList<ArrayList<Integer>> winningCombinations;
     private ArrayList<ArrayList<Integer>> finalWinningPosition;
 
+    public ArrayList<ArrayList<Integer>> getFinalWinningPosition() {
+        return finalWinningPosition;
+    }
+
     public void clearWinningPositions() {
         finalWinningPosition.clear();
     }
