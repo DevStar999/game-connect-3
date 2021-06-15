@@ -38,7 +38,9 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
-            android:onClick="makeMove" />
+            android:onClick="makeMove"
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView1"
             android:tag="1"
@@ -47,7 +49,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView2"
             android:tag="2"
@@ -56,7 +59,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView3"
             android:tag="3"
@@ -65,7 +69,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView4"
             android:tag="4"
@@ -74,7 +79,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView5"
             android:tag="5"
@@ -83,7 +89,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView6"
             android:tag="6"
@@ -92,7 +99,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView7"
             android:tag="7"
@@ -101,7 +109,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
         <ImageView
             android:id="@+id/cellImageView8"
             android:tag="8"
@@ -110,7 +119,8 @@
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
             android:onClick="makeMove"
-            android:src="@drawable/red"/>
+            android:src="@drawable/blank"
+            android:alpha="0"/>
     </GridLayout>
 
     <Button
