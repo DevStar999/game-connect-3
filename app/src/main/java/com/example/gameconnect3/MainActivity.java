@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+    // Game Logic Related Variables
     enum CellValues {
         blank, red, yellow;
     }
@@ -19,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ArrayList<Integer>> winningCombinations;
     private ArrayList<CellValues> cellStates;
 
-    private void initialise() {
+    // Views
+    private Button startGameButton;
+
+    private void initialiseVariables() {
         playerTurn = 0;
         gameOngoing = false;
 
@@ -38,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         for(Integer cellPosition=0; cellPosition<9; cellPosition++) {
             cellStates.add(CellValues.blank);
         }
+    }
+
+    private void initialiseView() {
+        startGameButton = findViewById(R.id.startGameButton);
     }
 
     public void makeMove(View view) {
@@ -59,6 +68,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initialise();
+        initialiseVariables();
+        initialiseView();
+
+        startGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerTurn = 1;
+                gameOngoing = true;
+                startGameButton.setEnabled(false);
+                startGameButton.setAlpha(0f);
+                Log.i("Start Button Clicked", "playerTurn " + playerTurn
+                        + ", gameOngoing = " + gameOngoing);
+            }
+        });
     }
 }
