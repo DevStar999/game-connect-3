@@ -1,13 +1,14 @@
 package com.example.gameconnect3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Views
     private Button startGameButton;
+    private LinearLayout centerInfoLinearLayout;
+    private TextView playMessageTextView;
 
     private void initialiseVariables() {
         playerTurn = 0;
@@ -31,13 +34,15 @@ public class MainActivity extends AppCompatActivity {
         postGameDisplays = new PostGameDisplays(this);
 
         cellStates = new ArrayList<>();
-        for(Integer cellPosition=0; cellPosition<9; cellPosition++) {
+        for (Integer cellPosition = 0; cellPosition < 9; cellPosition++) {
             cellStates.add(CellValues.blank);
         }
     }
 
     private void initialiseView() {
         startGameButton = findViewById(R.id.startGameButton);
+        centerInfoLinearLayout = findViewById(R.id.centerInfoLinearLayout);
+        playMessageTextView = findViewById(R.id.playMessageTextView);
     }
 
     public void makeMove(View view) {
@@ -51,10 +56,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         CellValues currentPlayer;
-        if (playerTurn%2 == CellValues.red.ordinal()) { // Chance for Red to play
+        if (playerTurn % 2 == CellValues.red.ordinal()) { // Chance for Red to play
             currentPlayer = CellValues.red;
-        }
-        else { // Chance for Yellow to play
+        } else { // Chance for Yellow to play
             currentPlayer = CellValues.yellow;
         }
         Integer gamePieceResourceId = getResources().getIdentifier(currentPlayer.toString(),
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         view.animate().translationYBy(1000).setDuration(200);
         cellStates.set(cellPosition, currentPlayer);
 
-        // Change playerTurn
+        // Increase playerTurn counter
         playerTurn++;
 
         // Check game status
@@ -77,16 +81,28 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Info Game WIN", "Player " + currentPlayer.toString() + " has won game");
             postGameDisplays.displayWin(this, currentPlayer.toString(), referee.getFinalWinningPosition());
             gameOver = true;
-        }
-        else if(referee.checkDraw(playerTurn)) { // Game ended as a draw
+        } else if (referee.checkDraw(playerTurn)) { // Game ended as a draw
             Log.i("Info Game DRAW", "NO WIN, Board full filled");
             postGameDisplays.displayDraw();
             gameOver = true;
         }
 
         if (gameOver) {
-            gameOngoing = false; isResetRequired = true;
-            startGameButton.setEnabled(true); startGameButton.setAlpha(1f);
+            gameOngoing = false;
+            isResetRequired = true;
+            startGameButton.setEnabled(true);
+            startGameButton.setAlpha(1f);
+            centerInfoLinearLayout.setAlpha(0f);
+            playMessageTextView.setAlpha(1f);
+            playMessageTextView.setText("Let's Start Again");
+        } else {
+            // Change playerTurn
+            ImageView turnSymbolImageView = findViewById(R.id.turnSymbolImageView);
+            currentPlayer = CellValues.values()[playerTurn % 2];
+            Integer nextGamePieceResourceId = getResources().getIdentifier(currentPlayer.toString(),
+                    "drawable",
+                    this.getPackageName());
+            turnSymbolImageView.setImageResource(nextGamePieceResourceId);
         }
     }
 
@@ -102,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
 
         referee.clearWinningPositions();
 
-        for (Integer i=0; i<9; i++) {
+        for (Integer i = 0; i < 9; i++) {
             cellStates.set(i, CellValues.blank);
 
-            Integer cellResourceId =  getResources().getIdentifier("cellImageView" + i.toString(),
+            Integer cellResourceId = getResources().getIdentifier("cellImageView" + i.toString(),
                     "id",
                     this.getPackageName());
             ImageView cell = findViewById(cellResourceId);
@@ -131,6 +147,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 playerTurn = 1;
+                ImageView turnSymbolImageView = findViewById(R.id.turnSymbolImageView);
+                Integer nextGamePieceResourceId = getResources().getIdentifier(
+                        CellValues.values()[playerTurn % 2].toString(),
+                        "drawable",
+                        MainActivity.this.getPackageName());
+                turnSymbolImageView.setImageResource(nextGamePieceResourceId);
+                centerInfoLinearLayout.setAlpha(1f);
+                playMessageTextView.setAlpha(0f);
+
                 gameOngoing = true;
                 startGameButton.setEnabled(false);
                 startGameButton.setAlpha(0f);

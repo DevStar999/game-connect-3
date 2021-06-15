@@ -8,16 +8,57 @@
     tools:context=".MainActivity"
     android:padding="10dp">
 
+    <LinearLayout
+        android:id="@+id/centerInfoLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/boardImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Player Turn - "
+            android:textSize="22sp"
+            android:textColor="#000000"
+            android:textAlignment="center"/>
+
+        <ImageView
+            android:id="@+id/turnSymbolImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/playMessageTextView"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Let's Play"
+        android:textSize="22sp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/boardImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_weight="1"/>
+
     <ImageView
         android:id="@+id/boardImageView"
         android:src="@drawable/board"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centerInfoLinearLayout"
         app:layout_constraintBottom_toTopOf="@id/startGameButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_weight="1"/>
 
     <GridLayout
         android:id="@+id/cellsGridLayout"
@@ -26,10 +67,11 @@
         android:rowCount="3"
         android:columnCount="3"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centerInfoLinearLayout"
         app:layout_constraintBottom_toTopOf="@id/startGameButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_weight="1"
         android:paddingRight="4dp">
         <ImageView
             android:id="@+id/cellImageView0"
