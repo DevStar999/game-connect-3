@@ -13,9 +13,6 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     // Game Logic Related Variables
-    enum CellValues {
-        blank, red, yellow;
-    }
     private Integer playerTurn;
     private Boolean gameOngoing;
     private Boolean isResetRequired;
