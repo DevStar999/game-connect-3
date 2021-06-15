@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/cellsGridLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:rowCount="3"

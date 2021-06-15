@@ -69,18 +69,44 @@ public class MainActivity extends AppCompatActivity {
         playerTurn++;
 
         // Check game status
+        Boolean gameOver = false;
         if (referee.checkWin(cellStates)) { // One of the players won
             Log.i("Info Game WIN", "Player " + currentPlayer.toString() + " has won game");
-            gameOngoing = false; isResetRequired = true;
         }
         else if(referee.checkDraw(playerTurn)) { // Game ended as a draw
             Log.i("Info Game DRAW", "NO WIN, Board full filled");
+        }
+
+        if (gameOver) {
             gameOngoing = false; isResetRequired = true;
+            startGameButton.setEnabled(true); startGameButton.setAlpha(1f);
         }
     }
 
     private void resetGame() {
+        /*
         // Logic to reset Game
+        1. Set isResetRequired to false;
+        2. For referee, empty the ArrayList of finalWinningPositions
+        3. For all elements of cellStates, change value to blank
+        4. ImageView src image to blank.jpeg
+        */
+        isResetRequired = false;
+
+        referee.clearWinningPositions();
+
+        for (Integer i=0; i<9; i++) {
+            cellStates.set(i, CellValues.blank);
+
+            Integer cellResourceId =  getResources().getIdentifier("cellImageView" + i.toString(),
+                    "drawable",
+                    this.getPackageName());
+            ImageView cell = findViewById(cellResourceId);
+            Integer blankPieceResourceId = getResources().getIdentifier(CellValues.blank.toString(),
+                    "drawable",
+                    this.getPackageName());
+            cell.setImageResource(blankPieceResourceId);
+        }
     }
 
     @Override
