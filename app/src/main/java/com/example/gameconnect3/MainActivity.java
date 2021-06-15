@@ -50,17 +50,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void makeMove(View view) {
-        if (!gameOngoing) {
+        String viewTag = view.getTag().toString();
+        Integer cellPosition = Integer.parseInt(viewTag);
+        Log.i("Move Made :", "Cell: " + viewTag);
+
+        // If game is not ongoing OR the current cell is not empty, the don't allow to make a move
+        if (!gameOngoing || !cellStates.get(cellPosition).equals(CellValues.blank)) {
             return;
         }
 
-        String viewTag = view.getTag().toString();
-        Log.i("Slot Pressed :", "Slot: " + viewTag);
-        //Log.i("Co-ordinates :", "x: " + location[0] + ", y: " + location[1]);
-        ((ImageView) view).setImageResource(R.drawable.red);// Testing with red piece
+        CellValues currentPlayer;
+        if (playerTurn == 1) { // Chance for Red to play
+            currentPlayer = CellValues.red;
+        }
+        else { // Chance for Yellow to play
+            currentPlayer = CellValues.yellow;
+        }
+        Integer gamePieceResourceId = getResources().getIdentifier(currentPlayer.toString(),
+                "drawable",
+                this.getPackageName());
+
+        // Make the move
+        ((ImageView) view).setImageResource(gamePieceResourceId);
         view.setTranslationY(-1000);
         view.setAlpha(1);
         view.animate().translationYBy(1000).setDuration(200);
+        cellStates.set(cellPosition, currentPlayer);
+
+        // Change playerTurn
+        playerTurn = (playerTurn == 1) ? 2 : 1;
     }
 
     @Override
