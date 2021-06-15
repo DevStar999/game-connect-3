@@ -70,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Check game status
         if (referee.checkWin(cellStates)) { // One of the players won
-
+            Log.i("Info Game WIN", "Player " + currentPlayer.toString() + " has won game");
             gameOngoing = false; isResetRequired = true;
         }
         else if(referee.checkDraw(cellStates)) { // Game ended as a draw
-
+            Log.i("Info Game DRAW", "NO WIN, Board full filled");
             gameOngoing = false; isResetRequired = true;
         }
     }
