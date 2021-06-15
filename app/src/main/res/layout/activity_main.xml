@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toTopOf="@id/startGameButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingLeft="6dp">
+        android:paddingRight="4dp">
         <ImageView
             android:id="@+id/cellImageView0"
             android:tag="0"
