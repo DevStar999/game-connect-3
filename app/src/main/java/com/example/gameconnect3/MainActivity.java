@@ -9,14 +9,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     // Game Logic Related Variables
     private Integer playerTurn;
     private Boolean gameOngoing;
     private Boolean isResetRequired;
-    private ArrayList<ArrayList<Integer>> winningCombinations;
+    private GameDecisionLogic referee;
     private ArrayList<CellValues> cellStates;
 
     // Views
@@ -26,17 +25,7 @@ public class MainActivity extends AppCompatActivity {
         playerTurn = 0;
         gameOngoing = false;
         isResetRequired = false;
-
-        winningCombinations = new ArrayList<ArrayList<Integer>>(){{
-            new ArrayList<>(Arrays.asList(0, 1, 2));
-            new ArrayList<>(Arrays.asList(3, 4, 5));
-            new ArrayList<>(Arrays.asList(6, 7, 8));
-            new ArrayList<>(Arrays.asList(0, 4, 8));
-            new ArrayList<>(Arrays.asList(2, 4, 6));
-            new ArrayList<>(Arrays.asList(0, 3, 6));
-            new ArrayList<>(Arrays.asList(1, 4, 7));
-            new ArrayList<>(Arrays.asList(2, 5, 8));
-        }};
+        referee = new GameDecisionLogic();
 
         cellStates = new ArrayList<>();
         for(Integer cellPosition=0; cellPosition<9; cellPosition++) {
@@ -80,21 +69,14 @@ public class MainActivity extends AppCompatActivity {
         playerTurn = (playerTurn == 1) ? 2 : 1;
 
         // Check game status
-        if (checkWin()) { // One of the players won
-            gameOngoing = false;
-        }
-        else if(checkDraw()) { // Game ended as a draw
-            gameOngoing = false;
-        }
-    }
+        if (referee.checkWin(cellStates)) { // One of the players won
 
-    private Boolean checkWin() {
-        // Dummy value for now
-        return false;
-    }
-    private Boolean checkDraw() {
-        // Dummy value for now
-        return false;
+            gameOngoing = false; isResetRequired = true;
+        }
+        else if(referee.checkDraw(cellStates)) { // Game ended as a draw
+
+            gameOngoing = false; isResetRequired = true;
+        }
     }
 
     private void resetGame() {
