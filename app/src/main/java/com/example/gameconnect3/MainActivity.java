@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     // Game Logic Related Variables
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean gameOngoing;
     private Boolean isResetRequired;
     private GameDecisionLogic referee;
-    private ArrayList<CellValues> cellStates;
+    private List<CellValues> cellStates;
     private PostGameDisplays postGameDisplays;
 
     // Views

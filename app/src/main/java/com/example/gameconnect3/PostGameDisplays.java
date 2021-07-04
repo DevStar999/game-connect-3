@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PostGameDisplays {
     private AlertDialog.Builder gameResultDialogBuilder;
@@ -19,7 +20,7 @@ public class PostGameDisplays {
         this.context = context;
     }
 
-    public void displayWin(Context context, String winningPlayer, ArrayList<ArrayList<Integer>> finalWinningPositions) {
+    public void displayWin(Context context, String winningPlayer, List<List<Integer>> finalWinningPositions) {
         // Creating the Dialog Box
         gameResultDialogBuilder = new AlertDialog.Builder(context);
         String capWinningPlayer = winningPlayer.substring(0,1).toUpperCase() + winningPlayer.substring(1);
@@ -36,7 +37,7 @@ public class PostGameDisplays {
         gameResultDialog.getWindow().setBackgroundDrawable(new ColorDrawable(winningColorNumber));
 
         // Coloring all the winning positions with winning color
-        for(ArrayList<Integer> currentWinningPosition: finalWinningPositions) {
+        for(List<Integer> currentWinningPosition: finalWinningPositions) {
             for(Integer cell: currentWinningPosition) {
                 Integer cellResourceId = context.getResources().getIdentifier("cellImageView" + cell.toString(),
                         "id",

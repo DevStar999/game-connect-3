@@ -2,12 +2,13 @@ package com.example.gameconnect3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GameDecisionLogic {
-    private ArrayList<ArrayList<Integer>> winningCombinations;
-    private ArrayList<ArrayList<Integer>> finalWinningPosition;
+    private List<List<Integer>> winningCombinations;
+    private List<List<Integer>> finalWinningPosition;
 
-    public ArrayList<ArrayList<Integer>> getFinalWinningPosition() {
+    public List<List<Integer>> getFinalWinningPosition() {
         return finalWinningPosition;
     }
 
@@ -16,7 +17,7 @@ public class GameDecisionLogic {
     }
 
     public GameDecisionLogic() {
-        winningCombinations = new ArrayList<ArrayList<Integer>>(){{
+        winningCombinations = new ArrayList(){{
             add(new ArrayList<>(Arrays.asList(0, 1, 2)));
             add(new ArrayList<>(Arrays.asList(3, 4, 5)));
             add(new ArrayList<>(Arrays.asList(6, 7, 8)));
@@ -29,7 +30,7 @@ public class GameDecisionLogic {
         finalWinningPosition = new ArrayList<>();
     }
 
-    public Boolean checkWin(ArrayList<CellValues> cellStates) {
+    public Boolean checkWin(List<CellValues> cellStates) {
         for(Integer cwc=0; cwc<winningCombinations.size(); cwc++) {
             Integer count = 0;
             for(Integer i=0; i<3; i++) {
