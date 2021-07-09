@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialiseView() {
-        startGameButton = findViewById(R.id.startGameButton);
-        centerInfoLinearLayout = findViewById(R.id.centerInfoLinearLayout);
-        playMessageTextView = findViewById(R.id.playMessageTextView);
+        startGameButton = findViewById(R.id.start_game_button);
+        centerInfoLinearLayout = findViewById(R.id.center_info_linear_layout);
+        playMessageTextView = findViewById(R.id.play_message_text_view);
     }
 
     public void makeMove(View view) {
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             playMessageTextView.setText("Let's Start Again");
         } else {
             // Change playerTurn
-            ImageView turnSymbolImageView = findViewById(R.id.turnSymbolImageView);
+            ImageView turnSymbolImageView = findViewById(R.id.turn_symbol_image_view);
             currentPlayer = CellValues.values()[playerTurn % 2];
             Integer nextGamePieceResourceId = getResources().getIdentifier(currentPlayer.toString(),
                     "drawable",
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         for (Integer i = 0; i < 9; i++) {
             cellStates.set(i, CellValues.blank);
 
-            Integer cellResourceId = getResources().getIdentifier("cellImageView" + i.toString(),
+            Integer cellResourceId = getResources().getIdentifier("cell_image_view_" + i.toString(),
                     "id",
                     this.getPackageName());
             ImageView cell = findViewById(cellResourceId);
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 playerTurn = 1;
-                ImageView turnSymbolImageView = findViewById(R.id.turnSymbolImageView);
+                ImageView turnSymbolImageView = findViewById(R.id.turn_symbol_image_view);
                 Integer nextGamePieceResourceId = getResources().getIdentifier(
                         CellValues.values()[playerTurn % 2].toString(),
                         "drawable",

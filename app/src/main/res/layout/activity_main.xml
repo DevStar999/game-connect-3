@@ -9,13 +9,13 @@
     android:padding="10dp">
 
     <LinearLayout
-        android:id="@+id/centerInfoLinearLayout"
+        android:id="@+id/center_info_linear_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:alpha="0"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/boardImageView"
+        app:layout_constraintBottom_toTopOf="@id/board_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_weight="1">
@@ -28,13 +28,13 @@
             android:textAlignment="center"/>
 
         <ImageView
-            android:id="@+id/turnSymbolImageView"
+            android:id="@+id/turn_symbol_image_view"
             android:layout_width="35dp"
             android:layout_height="35dp"/>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/playMessageTextView"
+        android:id="@+id/play_message_text_view"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:text="Let's Play"
@@ -42,38 +42,38 @@
         android:textColor="#000000"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/boardImageView"
+        app:layout_constraintBottom_toTopOf="@id/board_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_weight="1"/>
 
     <ImageView
-        android:id="@+id/boardImageView"
+        android:id="@+id/board_image_view"
         android:src="@drawable/board"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/centerInfoLinearLayout"
-        app:layout_constraintBottom_toTopOf="@id/startGameButton"
+        app:layout_constraintTop_toBottomOf="@id/center_info_linear_layout"
+        app:layout_constraintBottom_toTopOf="@id/start_game_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_weight="1"/>
 
     <GridLayout
-        android:id="@+id/cellsGridLayout"
+        android:id="@+id/cells_grid_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:rowCount="3"
         android:columnCount="3"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/centerInfoLinearLayout"
-        app:layout_constraintBottom_toTopOf="@id/startGameButton"
+        app:layout_constraintTop_toBottomOf="@id/center_info_linear_layout"
+        app:layout_constraintBottom_toTopOf="@id/start_game_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_weight="1"
         android:paddingRight="4dp">
         <ImageView
-            android:id="@+id/cellImageView0"
+            android:id="@+id/cell_image_view_0"
             android:tag="0"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -83,7 +83,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView1"
+            android:id="@+id/cell_image_view_1"
             android:tag="1"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -93,7 +93,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView2"
+            android:id="@+id/cell_image_view_2"
             android:tag="2"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -103,7 +103,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView3"
+            android:id="@+id/cell_image_view_3"
             android:tag="3"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -113,7 +113,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView4"
+            android:id="@+id/cell_image_view_4"
             android:tag="4"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -123,7 +123,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView5"
+            android:id="@+id/cell_image_view_5"
             android:tag="5"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -133,7 +133,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView6"
+            android:id="@+id/cell_image_view_6"
             android:tag="6"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -143,7 +143,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView7"
+            android:id="@+id/cell_image_view_7"
             android:tag="7"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -153,7 +153,7 @@
             android:src="@drawable/blank"
             android:alpha="0"/>
         <ImageView
-            android:id="@+id/cellImageView8"
+            android:id="@+id/cell_image_view_8"
             android:tag="8"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
@@ -165,7 +165,7 @@
     </GridLayout>
 
     <Button
-        android:id="@+id/startGameButton"
+        android:id="@+id/start_game_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Game"

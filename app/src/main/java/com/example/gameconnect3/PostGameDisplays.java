@@ -39,7 +39,7 @@ public class PostGameDisplays {
         // Coloring all the winning positions with winning color
         for(List<Integer> currentWinningPosition: finalWinningPositions) {
             for(Integer cell: currentWinningPosition) {
-                Integer cellResourceId = context.getResources().getIdentifier("cellImageView" + cell.toString(),
+                Integer cellResourceId = context.getResources().getIdentifier("cell_image_view_" + cell.toString(),
                         "id",
                         context.getPackageName());
                 ImageView cellImageView = ((Activity) context).findViewById(cellResourceId);
