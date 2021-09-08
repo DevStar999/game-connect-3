@@ -17,7 +17,7 @@ public class GameDecisionLogic {
     }
 
     public GameDecisionLogic() {
-        winningCombinations = new ArrayList(){{
+        winningCombinations = new ArrayList() {{
             add(new ArrayList<>(Arrays.asList(0, 1, 2)));
             add(new ArrayList<>(Arrays.asList(3, 4, 5)));
             add(new ArrayList<>(Arrays.asList(6, 7, 8)));
@@ -31,16 +31,15 @@ public class GameDecisionLogic {
     }
 
     public Boolean checkWin(List<CellValues> cellStates) {
-        for(Integer cwc=0; cwc<winningCombinations.size(); cwc++) {
+        for (Integer cwc = 0; cwc < winningCombinations.size(); cwc++) {
             Integer count = 0;
-            for(Integer i=0; i<3; i++) {
-                if (i==0) { // Check if cell state is not blank
+            for (Integer i = 0; i < 3; i++) {
+                if (i == 0) { // Check if cell state is not blank
                     if (cellStates.get(winningCombinations.get(cwc).get(i)) == CellValues.red ||
                             cellStates.get(winningCombinations.get(cwc).get(i)) == CellValues.yellow) {
                         count++;
                     }
-                }
-                else { // Check if all three cells have same game piece
+                } else { // Check if all three cells have same game piece
                     if (cellStates.get(winningCombinations.get(cwc).get(i)) ==
                             cellStates.get(winningCombinations.get(cwc).get(0))) {
                         count++;
@@ -52,7 +51,7 @@ public class GameDecisionLogic {
             }
         }
 
-        return (finalWinningPosition.size()>0);
+        return (finalWinningPosition.size() > 0);
     }
 
     public Boolean checkDraw(Integer noOfPlayerTurnsMade) {
