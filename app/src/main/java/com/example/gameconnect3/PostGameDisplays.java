@@ -13,7 +13,7 @@ import java.util.List;
 public class PostGameDisplays {
     private AlertDialog.Builder gameResultDialogBuilder;
     private AlertDialog gameResultDialog;
-    private Context context;
+    private final Context context;
 
     public PostGameDisplays(Context context) {
         this.context = context;
